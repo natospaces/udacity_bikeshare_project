@@ -12,3 +12,5 @@ for the python bit
 	
 My approach was to use sql lite as ian initial data source since we've already learnt about database querying in the first project.
 Data source loads the info to a pandas dataframe the I use pandas to work out the general statistics
+
+project also assumes python file and the sqlite database are in the same folder
