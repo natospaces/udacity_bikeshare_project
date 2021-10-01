@@ -11,10 +11,9 @@ CITY_DATA = { 'chicago': '3',
               'new york': '1',
               'washington': '2' }
 
-is_yes_no_dict = {'1':'Yes','2':'No'}
-month_filter = {'-1':'None','0':'All','1':'January','2':'February','3':'March', '4':'April','5':'May','6':'June'}
-day_filter = {'-1':'None','0':'All','1':'Sunday','2':'Monday','3':'Tuesday','4':'Wednesday','5':'Thursday',\
-              '6':'Friday','7':'Saturday'}
+is_yes_no_dict = {'yes':'1','no':'2'}
+month_filter = {'all':'0','january':'1','february':'2','march':'3', 'april':'4','may':'5','june':'6'}
+day_filter = {'all':'0','sunday':'1','monday':'2','tuesday':'3','wednesday':'4','thursday':'5','friday':'6','saturday':'7'}
 selected_city = []
 
 def get_input_with_validation(input_prompt_message,options):
@@ -32,7 +31,7 @@ def get_input_with_validation(input_prompt_message,options):
     prompt = chain([input_prompt_message], repeat(' '.join([input_error, input_prompt_message])))
     replies = map(input, prompt)
     correct_response = next(filter(lambda x: False if options.get(str(x).lower()) == None else True, replies))
-    return correct_response.lower()
+    return options.get(correct_response.lower())
     
 
 def get_filters():
@@ -48,35 +47,28 @@ def get_filters():
     # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
     # Hiya Let's explore US bikeshare data
     # Select city Chicago,NY or Wash
-    input_city_greeting = "Please type the city name for analysis : Chicago, \
-New York or Washington \n"
+    input_city_greeting = "Please type the city name for analysis : Chicago, New York or Washington \n"
     city = get_input_with_validation(input_city_greeting,CITY_DATA)
     
     # get user input for month (all, january, february, ... , june)
-    input_is_month_message = "Would you like to filter by month? Type number next \
-to your choice (1=Yes,2=No)\n"
+    input_is_month_message = "Would you like to filter by month? Type Yes or No\n"
     is_month = get_input_with_validation(input_is_month_message,is_yes_no_dict)
-    
+    print(is_month)
     if is_month == '1':
-        input_month_message = """To select by all months type 0\n or for a particular \
-month type appropriate integer(1=Jan,2=Feb,3=Mar,4=Apr,5=May,6=Jun)\n"""
+        input_month_message = "To select month filter from (All,January,February,March,April,May,June)\n"
         month = get_input_with_validation(input_month_message,month_filter)
     else:
         month = '-1'
 
     # get user input for day of week (all, monday, tuesday, ... sunday)
-
-    input_is_day_message = "Would you like to filter by day? Type number next to \
-your choice (1=Yes,2=No)\n"
+    input_is_day_message = "Would you like to filter by day? Type Yes or No\n"
     is_day = get_input_with_validation(input_is_day_message,is_yes_no_dict)
     
     if is_day == '1':
-        input_day_message = """To select by all day type 0\nor for a particular day \
-type appropriate integer(1=Sun,2=Mon,3=Tue,4=Wed,5=Thu,6=Fri,7=Sat)\n"""
+        input_day_message = "To select day of the week filter from (All,Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday)\n"
         day = get_input_with_validation(input_day_message,day_filter)
     else:
-        day = '-1'
-        
+        month = '-1'
 
     print("-"*40)
     selected_city.append(city.lower())
@@ -107,14 +99,14 @@ def load_data(city, month, day):
                       FROM    t_trip_cities c
                 """
     
-    city_filter = " where city_id = " + str(CITY_DATA.get(city.lower()))
+    city_filter = " where city_id = " + str(city)
         
-    if month == '-1' or month == '0':
+    if month == '0' or month == '-1':
         month_filter = ""
     else:
         month_filter = " and substr([Start Time],4,2) = '0" + month + "'"
         
-    if day == '-1' or day == '0':
+    if day == '0' or day == '-1':
         day_filter = ""
     else:
         day_filter = " and strftime('%w',(substr([Start Time],7,4) || '-'\
@@ -237,23 +229,23 @@ or empty values\n\n{user_type}\
 
         
     if 'Birth Year' in df.columns:
-        print('BYear')
-#         print("\nCALCULATING :: Birth Year Stats: Earliest Year -> " + str(int(df['Birth Year'].min())) + \
-#           " , Most Recent Year -> " + str(int(df['Birth Year'].max())) + " , \
-# Most Common Year -> " + str(int(df['Birth Year'].mode()[0])))
+        print("\nCALCULATING :: Birth Year Stats: Earliest Year -> " + str(int(df['Birth Year'].min())) + \
+          " , Most Recent Year -> " + str(int(df['Birth Year'].max())) + " , \
+Most Common Year -> " + str(int(df['Birth Year'].mode()[0])))
     else:    
         print("\nUnfortunately {selected_city} has no Birth Year Stats".format(selected_city=selected_city[0].capitalize()))
+        
     print("\n"+("-"*40)+("*"*20))
     print("\nUser and Birth Year Stats Operations took %s seconds to execute." % (time.time() - start_time))
     print("-"*85)
 
 
-def individual_rows_stats(df):
+def display_data(df):
     """Displays 5 rows of data from the csv file for the selected city.
     Args:
         param (df): Filtered data frame.
     """
-    input_row_by_row_message = "Would you like to view 5 rows of individual trip data?  Select 1 or 2  (1=Yes,2=No)\n"
+    input_row_by_row_message = "Would you like to view 5 rows of individual trip data?  Select Yes or No)\n"
     is_row = get_input_with_validation(input_row_by_row_message,is_yes_no_dict)
     print("\nPrinting the first 5 rows of the filtered data")
     
@@ -263,7 +255,7 @@ def individual_rows_stats(df):
         increment = 5
         while index < total_rows:
             print(df.iloc[index:index+increment,])
-            is_row = get_input_with_validation("Do you wish to continue viewing the data? Select 1 or 2 (1=Yes,2=No)\n",is_yes_no_dict)
+            is_row = get_input_with_validation("Do you wish to continue viewing the data? Select Yes or No\n",is_yes_no_dict)
             if is_row == '2':
                 break
             index = index + increment
@@ -281,7 +273,7 @@ def main():
         station_stats(df)
         trip_duration_stats(df)
         user_stats(df)
-        individual_rows_stats(df)
+        display_data(df)
         selected_city.clear()
 
         restart = input('\nWould you like to restart? Enter yes or no.\n')
