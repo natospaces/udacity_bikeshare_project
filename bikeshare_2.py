@@ -79,7 +79,7 @@ type appropriate integer(1=Sun,2=Mon,3=Tue,4=Wed,5=Thu,6=Fri,7=Sat)\n"""
         
 
     print("-"*40)
-    selected_city.append(city)
+    selected_city.append(city.lower())
     return city, month, day
 
 
@@ -137,7 +137,11 @@ def load_data(city, month, day):
     df['Start Time'] = pd.to_datetime(df['Start Time'])
     
     df['Birth Year'] = pd.to_numeric(df['Birth Year'], downcast ='integer',errors='coerce')
+    if df['Birth Year'].isnull().values.all(axis=0):
+        df = df.drop('Birth Year', 1)
 
+    if df.loc[(df.Gender != "null")].size == 0:
+        df = df.drop('Gender', 1)
     return df
 
 def time_stats(df):
@@ -220,21 +224,25 @@ def user_stats(df):
 or empty values\n\n{user_type}\
 ".format(user_type=df['User Type'].value_counts().rename_axis('User Type').to_frame('Total')))
 
-    # Display counts of gender
-    print("\n")
-    #setting the dropna parameter to False ensures null value counts are displayed
-    print("GENDER Counts - if Gender Column is empty that indicates null or empty values \n\n{gender_type}\
-".format(gender_type=df['Gender'].value_counts(dropna=False).rename_axis('Gender').to_frame('Total')))
-    
-
+ 
     # Display earliest, most recent, and most common year of birth
-    if selected_city[0] == "washington":
-        print("\nUnfortunately Washington has no birth stats")
-    else:    
-        print("\nCALCULATING :: Birth Year Stats: Earliest Year -> " + str(int(df['Birth Year'].min())) + \
-          " , Most Recent Year -> " + str(int(df['Birth Year'].max())) + " , \
-Most Common Year -> " + str(int(df['Birth Year'].mode()[0])))
+    if 'Gender' in df.columns:
+        # Display counts of gender
+        print("\n")
+        #setting the dropna parameter to False ensures null value counts are displayed
+        print("GENDER Counts - if Gender Column is empty that indicates null or empty values \n\n{gender_type}\
+".format(gender_type=df['Gender'].value_counts(dropna=False).rename_axis('Gender').to_frame('Total')))
+    else:
+        print("\nUnfortunately {selected_city} has no Gender Stats".format(selected_city=selected_city[0].capitalize()))
 
+        
+    if 'Birth Year' in df.columns:
+        print('BYear')
+#         print("\nCALCULATING :: Birth Year Stats: Earliest Year -> " + str(int(df['Birth Year'].min())) + \
+#           " , Most Recent Year -> " + str(int(df['Birth Year'].max())) + " , \
+# Most Common Year -> " + str(int(df['Birth Year'].mode()[0])))
+    else:    
+        print("\nUnfortunately {selected_city} has no Birth Year Stats".format(selected_city=selected_city[0].capitalize()))
     print("\n"+("-"*40)+("*"*20))
     print("\nUser and Birth Year Stats Operations took %s seconds to execute." % (time.time() - start_time))
     print("-"*85)
@@ -245,7 +253,7 @@ def individual_rows_stats(df):
     Args:
         param (df): Filtered data frame.
     """
-    input_row_by_row_message = "Would you like to see the filtered data row by row? Select 1 or 2  (1=Yes,2=No)\n"
+    input_row_by_row_message = "Would you like to view 5 rows of individual trip data?  Select 1 or 2  (1=Yes,2=No)\n"
     is_row = get_input_with_validation(input_row_by_row_message,is_yes_no_dict)
     print("\nPrinting the first 5 rows of the filtered data")
     
