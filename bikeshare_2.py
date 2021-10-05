@@ -31,6 +31,8 @@ def get_input_with_validation(input_prompt_message,options):
     prompt = chain([input_prompt_message], repeat(' '.join([input_error, input_prompt_message])))
     replies = map(input, prompt)
     correct_response = next(filter(lambda x: False if options.get(str(x).lower()) == None else True, replies))
+    if correct_response.lower() in CITY_DATA.keys():
+        selected_city.append(correct_response.lower())
     return options.get(correct_response.lower())
     
 
@@ -49,11 +51,9 @@ def get_filters():
     # Select city Chicago,NY or Wash
     input_city_greeting = "Please type the city name for analysis : Chicago, New York or Washington \n"
     city = get_input_with_validation(input_city_greeting,CITY_DATA)
-    
     # get user input for month (all, january, february, ... , june)
     input_is_month_message = "Would you like to filter by month? Type Yes or No\n"
     is_month = get_input_with_validation(input_is_month_message,is_yes_no_dict)
-    print(is_month)
     if is_month == '1':
         input_month_message = "To select month filter from (All,January,February,March,April,May,June)\n"
         month = get_input_with_validation(input_month_message,month_filter)
@@ -68,10 +68,9 @@ def get_filters():
         input_day_message = "To select day of the week filter from (All,Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday)\n"
         day = get_input_with_validation(input_day_message,day_filter)
     else:
-        month = '-1'
+        day = '-1'
 
     print("-"*40)
-    selected_city.append(city.lower())
     return city, month, day
 
 
@@ -245,11 +244,11 @@ def display_data(df):
     Args:
         param (df): Filtered data frame.
     """
-    input_row_by_row_message = "Would you like to view 5 rows of individual trip data?  Select Yes or No)\n"
+    input_row_by_row_message = "Would you like to view 5 rows of individual trip data?  Select Yes or No\n"
     is_row = get_input_with_validation(input_row_by_row_message,is_yes_no_dict)
-    print("\nPrinting the first 5 rows of the filtered data")
-    
+
     if is_row == '1':
+        print("\nPrinting the first 5 rows of the filtered data")
         total_rows = len(df.index)
         index = 0
         increment = 5
@@ -260,7 +259,7 @@ def display_data(df):
                 break
             index = index + increment
     else:
-        print("not paging")
+        print("You have chosen not to print rows")
 
     print('-'*80)
 
