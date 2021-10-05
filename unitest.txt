@@ -1,0 +1,315 @@
+input 1 => barcelona, WaSHINGTON, january, MonDAY (in this example, the first introduced city is rejected because it's not among the choosable ones)
+python3 bikeshare_2.py
+Hello! Let's explore some US bikeshare data!
+Please type the city name for analysis : Chicago, New York or Washington 
+barcelona
+Incorrect Selection Please type the city name for analysis : Chicago, New York or Washington 
+WaSHINGTON
+Would you like to filter by month? Type Yes or No
+Yes
+To select month filter from (All,January,February,March,April,May,June)
+january
+Would you like to filter by day? Type Yes or No
+Yes
+To select day of the week filter from (All,Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday)
+MonDAY
+----------------------------------------
+bikeshare_2.py:132: FutureWarning: In a future version of pandas all arguments of DataFrame.drop except for the argument 'labels' will be keyword-only
+  df = df.drop('Birth Year', 1)
+bikeshare_2.py:135: FutureWarning: In a future version of pandas all arguments of DataFrame.drop except for the argument 'labels' will be keyword-only
+  df = df.drop('Gender', 1)
+
+CALCULATING ::  TIMES OF TRAVEL FREQUENCY
+------------------------------------------
+
+ Most Frequent Month : January
+
+ Most Frequent Day   : Monday
+
+ Most Frequent Hour  : 17
+
+----------------------------------------********************
+
+Frequency Stats Operations took 0.0008025169372558594 seconds to execute.
+-------------------------------------------------------------------------------------
+
+CALCULATING ::  TOP STATIONS AND TRIPS
+--------------------------------------
+
+ Top Start Station              : Columbus Circle / Union Station
+
+ Top End Station                : Columbus Circle / Union Station
+
+ Top Trip Combination Stations  : 1st & D St SE to 1st & K St SE
+
+----------------------------------------********************
+
+The Top Stations and Trips Operations took 0.002129077911376953 seconds to execute.
+-------------------------------------------------------------------------------------
+
+CALCULATING :: TRIP DURATION SUM AND MEAN
+------------------------------------------
+
+Total Trip Duration  : 635.0 hours, 38126.0 minutes and 30.899000000208616 seconds. 
+Mean Trip Duration   : 11.0 minutes and 41.71499969325157 seconds. 
+
+----------------------------------------********************
+
+Trip Duration Operations took 0.0003421306610107422 seconds to execute.
+-------------------------------------------------------------------------------------
+
+CALCULATING :: USER STATS
+--------------------------
+
+USER TYPE Counts - if User Type Column is empty that indicates null or empty values
+
+            Total
+User Type        
+Subscriber   3043
+Customer      217
+
+Unfortunately Washington has no Gender Stats
+
+Unfortunately Washington has no Birth Year Stats
+
+----------------------------------------********************
+
+User and Birth Year Stats Operations took 0.0021495819091796875 seconds to execute.
+-------------------------------------------------------------------------------------
+Would you like to view 5 rows of individual trip data?  Select Yes or No
+No
+You have chosen not to print rows
+--------------------------------------------------------------------------------
+
+Would you like to restart? Enter yes or no.
+input 2 => washington, jUNe, mOnDAy
+python3 bikeshare_2.py
+Hello! Let's explore some US bikeshare data!
+Please type the city name for analysis : Chicago, New York or Washington 
+washington
+Would you like to filter by month? Type Yes or No
+yes
+To select month filter from (All,January,February,March,April,May,June)
+jUNe
+Would you like to filter by day? Type Yes or No
+Yes
+To select day of the week filter from (All,Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday)
+mOnDAy
+----------------------------------------
+bikeshare_2.py:132: FutureWarning: In a future version of pandas all arguments of DataFrame.drop except for the argument 'labels' will be keyword-only
+  df = df.drop('Birth Year', 1)
+bikeshare_2.py:135: FutureWarning: In a future version of pandas all arguments of DataFrame.drop except for the argument 'labels' will be keyword-only
+  df = df.drop('Gender', 1)
+
+CALCULATING ::  TIMES OF TRAVEL FREQUENCY
+------------------------------------------
+
+ Most Frequent Month : June
+
+ Most Frequent Day   : Monday
+
+ Most Frequent Hour  : 7
+
+----------------------------------------********************
+
+Frequency Stats Operations took 0.0013501644134521484 seconds to execute.
+-------------------------------------------------------------------------------------
+
+CALCULATING ::  TOP STATIONS AND TRIPS
+--------------------------------------
+
+ Top Start Station              : Columbus Circle / Union Station
+
+ Top End Station                : Columbus Circle / Union Station
+
+ Top Trip Combination Stations  : Jefferson Dr & 14th St SW to Jefferson Dr & 14th St SW
+
+----------------------------------------********************
+
+The Top Stations and Trips Operations took 0.004357099533081055 seconds to execute.
+-------------------------------------------------------------------------------------
+
+CALCULATING :: TRIP DURATION SUM AND MEAN
+------------------------------------------
+
+Total Trip Duration  : 2246.0 hours, 134790.0 minutes and 52.1929999999702 seconds. 
+Mean Trip Duration   : 18.0 minutes and 27.263443729463233 seconds. 
+
+----------------------------------------********************
+
+Trip Duration Operations took 0.0003795623779296875 seconds to execute.
+-------------------------------------------------------------------------------------
+
+CALCULATING :: USER STATS
+--------------------------
+
+USER TYPE Counts - if User Type Column is empty that indicates null or empty values
+
+            Total
+User Type        
+Subscriber   5651
+Customer     1653
+
+Unfortunately Washington has no Gender Stats
+
+Unfortunately Washington has no Birth Year Stats
+
+----------------------------------------********************
+
+User and Birth Year Stats Operations took 0.002582550048828125 seconds to execute.
+-------------------------------------------------------------------------------------
+Would you like to view 5 rows of individual trip data?  Select Yes or No
+
+input 3 => washington, March, Tuesday
+python3 bikeshare_2.py
+Hello! Let's explore some US bikeshare data!
+Please type the city name for analysis : Chicago, New York or Washington 
+washington
+Would you like to filter by month? Type Yes or No
+yes
+To select month filter from (All,January,February,March,April,May,June)
+March
+Would you like to filter by day? Type Yes or No
+yes
+To select day of the week filter from (All,Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday)
+Tuesday
+----------------------------------------
+bikeshare_2.py:132: FutureWarning: In a future version of pandas all arguments of DataFrame.drop except for the argument 'labels' will be keyword-only
+  df = df.drop('Birth Year', 1)
+bikeshare_2.py:135: FutureWarning: In a future version of pandas all arguments of DataFrame.drop except for the argument 'labels' will be keyword-only
+  df = df.drop('Gender', 1)
+
+CALCULATING ::  TIMES OF TRAVEL FREQUENCY
+------------------------------------------
+
+ Most Frequent Month : March
+
+ Most Frequent Day   : Tuesday
+
+ Most Frequent Hour  : 17
+
+----------------------------------------********************
+
+Frequency Stats Operations took 0.0010528564453125 seconds to execute.
+-------------------------------------------------------------------------------------
+
+CALCULATING ::  TOP STATIONS AND TRIPS
+--------------------------------------
+
+ Top Start Station              : Columbus Circle / Union Station
+
+ Top End Station                : Columbus Circle / Union Station
+
+ Top Trip Combination Stations  : 8th & F St NE to Columbus Circle / Union Station
+
+----------------------------------------********************
+
+The Top Stations and Trips Operations took 0.003202199935913086 seconds to execute.
+-------------------------------------------------------------------------------------
+
+CALCULATING :: TRIP DURATION SUM AND MEAN
+------------------------------------------
+
+Total Trip Duration  : 1389.0 hours, 83384.0 minutes and 40.16000000014901 seconds. 
+Mean Trip Duration   : 15.0 minutes and 37.08188050196668 seconds. 
+
+----------------------------------------********************
+
+Trip Duration Operations took 0.0003521442413330078 seconds to execute.
+-------------------------------------------------------------------------------------
+
+CALCULATING :: USER STATS
+--------------------------
+
+USER TYPE Counts - if User Type Column is empty that indicates null or empty values
+
+            Total
+User Type        
+Subscriber   4445
+Customer      894
+
+Unfortunately Washington has no Gender Stats
+
+Unfortunately Washington has no Birth Year Stats
+
+----------------------------------------********************
+
+User and Birth Year Stats Operations took 0.0022771358489990234 seconds to execute.
+-------------------------------------------------------------------------------------
+Would you like to view 5 rows of individual trip data?  Select Yes or No
+input 4 => washington, aLL, All
+python3 bikeshare_2.py
+Hello! Let's explore some US bikeshare data!
+Please type the city name for analysis : Chicago, New York or Washington 
+washington
+Would you like to filter by month? Type Yes or No
+Yes
+To select month filter from (All,January,February,March,April,May,June)
+aLL
+Would you like to filter by day? Type Yes or No
+Yes
+To select day of the week filter from (All,Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday)
+All
+----------------------------------------
+bikeshare_2.py:132: FutureWarning: In a future version of pandas all arguments of DataFrame.drop except for the argument 'labels' will be keyword-only
+  df = df.drop('Birth Year', 1)
+bikeshare_2.py:135: FutureWarning: In a future version of pandas all arguments of DataFrame.drop except for the argument 'labels' will be keyword-only
+  df = df.drop('Gender', 1)
+
+CALCULATING ::  TIMES OF TRAVEL FREQUENCY
+------------------------------------------
+
+ Most Frequent Month : June
+
+ Most Frequent Day   : Wednesday
+
+ Most Frequent Hour  : 8
+
+----------------------------------------********************
+
+Frequency Stats Operations took 0.05203533172607422 seconds to execute.
+-------------------------------------------------------------------------------------
+
+CALCULATING ::  TOP STATIONS AND TRIPS
+--------------------------------------
+
+ Top Start Station              : Columbus Circle / Union Station
+
+ Top End Station                : Columbus Circle / Union Station
+
+ Top Trip Combination Stations  : Jefferson Dr & 14th St SW to Jefferson Dr & 14th St SW
+
+----------------------------------------********************
+
+The Top Stations and Trips Operations took 0.2957170009613037 seconds to execute.
+-------------------------------------------------------------------------------------
+
+CALCULATING :: TRIP DURATION SUM AND MEAN
+------------------------------------------
+
+Total Trip Duration  : 103106.0 hours, 6186399.0 minutes and 45.48400008678436 seconds. 
+Mean Trip Duration   : 20.0 minutes and 37.27995161333365 seconds. 
+
+----------------------------------------********************
+
+Trip Duration Operations took 0.0024907588958740234 seconds to execute.
+-------------------------------------------------------------------------------------
+
+CALCULATING :: USER STATS
+--------------------------
+
+USER TYPE Counts - if User Type Column is empty that indicates null or empty values
+
+             Total
+User Type         
+Subscriber  220786
+Customer     79214
+
+Unfortunately Washington has no Gender Stats
+
+Unfortunately Washington has no Birth Year Stats
+
+----------------------------------------********************
+
+User and Birth Year Stats Operations took 0.03359627723693848 seconds to execute.
+-------------------------------------------------------------------------------------
