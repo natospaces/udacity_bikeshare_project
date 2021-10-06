@@ -51,24 +51,12 @@ def get_filters():
     # Select city Chicago,NY or Wash
     input_city_greeting = "Please type the city name for analysis : Chicago, New York or Washington \n"
     city = get_input_with_validation(input_city_greeting,CITY_DATA)
-    # get user input for month (all, january, february, ... , june)
-    input_is_month_message = "Would you like to filter by month? Type Yes or No\n"
-    is_month = get_input_with_validation(input_is_month_message,is_yes_no_dict)
-    if is_month == '1':
-        input_month_message = "To select month filter from (All,January,February,March,April,May,June)\n"
-        month = get_input_with_validation(input_month_message,month_filter)
-    else:
-        month = '-1'
 
-    # get user input for day of week (all, monday, tuesday, ... sunday)
-    input_is_day_message = "Would you like to filter by day? Type Yes or No\n"
-    is_day = get_input_with_validation(input_is_day_message,is_yes_no_dict)
+    input_month_message = "To select month filter from (All,January,February,March,April,May,June)\n"
+    month = get_input_with_validation(input_month_message, month_filter)
     
-    if is_day == '1':
-        input_day_message = "To select day of the week filter from (All,Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday)\n"
-        day = get_input_with_validation(input_day_message,day_filter)
-    else:
-        day = '-1'
+    input_day_message = "To select day of the week filter from (All,Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday)\n"
+    day = get_input_with_validation(input_day_message, day_filter)
 
     print("-"*40)
     return city, month, day
